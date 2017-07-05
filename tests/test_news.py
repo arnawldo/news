@@ -17,4 +17,3 @@ def test__news_sources_and_source_names_equal__succeeds(news_client):
 
 def test__news_class_has_api_key__succeds():
     assert News.APIKEY is not None
-
