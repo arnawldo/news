@@ -79,3 +79,17 @@ class News(object):
             stories += "-" * 50 + "\n\n"
 
         return stories
+
+    def fetch_news(self):
+        """
+        Access news from newsapi.org API
+
+        :return:
+        """
+        new_api = ("https://newsapi.org/v1/articles?source={source}&sortBy={sort_method}&apiKey={apikey}"
+                   .format(source=self.current_source,
+                           sort_method=self.current_sort,
+                           apikey=News.APIKEY))
+
+        request = requests.get(new_api)
+        self.articles = request.json()["articles"]

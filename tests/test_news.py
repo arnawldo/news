@@ -47,10 +47,17 @@ def test__news_set_source__zero_negative_or_above_5_input__raises(news_client, z
     with pytest.raises(MenuException):
         news_client.set_sort_method(zero_negative_or_above_5_int)
 
+# fetch news methods
+
+def test__news_fetch__succeeds(news_client):
+    news_client.fetch_news()
+    assert len(news_client.articles) != 0
+
 # show news methods
 
 def test__news_show_news_sources_returns_str__succeeds(news_client):
     assert type(news_client.show_news_sources()) == str
 
 def test__news_show_news_articles_returns_str__succeeds(news_client):
+    news_client.fetch_news()
     assert type(news_client.show_news_articles()) == str
