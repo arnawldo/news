@@ -27,8 +27,22 @@ def test__news_set_source__not_int_input__raises(news_client, not_int_input):
     with pytest.raises(MenuException):
         news_client.set_source(not_int_input)
 
-@pytest.mark.parametrize("negative_or_above_5_int", [-3, -100, 6, 100])
+@pytest.mark.parametrize("zero_negative_or_above_5_int", [-3, 0, -100, 6, 100])
 
-def test__news_set_source__negative_or_above_5_input__raises(news_client, negative_or_above_5_int):
+def test__news_set_source__zero_negative_or_above_5_input__raises(news_client, negative_or_above_5_int):
     with pytest.raises(MenuException):
         news_client.set_source(negative_or_above_5_int)
+
+# check setting article sort method
+
+@pytest.mark.parametrize("not_int_input", ["3", 5.4, "", []])
+
+def test__news_set_sort__not_int_input__raises(news_client, not_int_input):
+    with pytest.raises(MenuException):
+        news_client.set_sort_method(not_int_input)
+
+@pytest.mark.parametrize("zero_negative_or_above_5_int", [-3, 0, -100, 6, 100])
+
+def test__news_set_source__zero_negative_or_above_5_input__raises(news_client, zero_negative_or_above_5_int):
+    with pytest.raises(MenuException):
+        news_client.set_sort_method(zero_negative_or_above_5_int)
