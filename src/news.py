@@ -63,6 +63,20 @@ class News(object):
 
         return menu
 
+    def show_news_sort_options(self):
+        """
+        Show methods of sorting the articles
+
+        :return: None
+        """
+        menu = "\n"
+
+        for i, method in enumerate(self.sort_by):
+            menu += "{pos}. {name} \n".format(pos=str(i + 1), name=method)
+
+        return menu
+
+
     def show_news_articles(self):
         """Show news stories"""
 

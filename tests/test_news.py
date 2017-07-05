@@ -63,6 +63,9 @@ def test__news_show_news_articles_returns_str__succeeds(news_client):
     news_client.fetch_news()
     assert type(news_client.show_news_articles()) == str
 
+def test__news_show_sort_methods_returns_str__succeeds(news_client):
+    assert type(news_client.show_news_sort_options()) == str
+
 # no news exception
 
 def test__news_show_articles__not_yet_fetched_news__raises(news_client):
