@@ -1,7 +1,8 @@
 import pytest
 
 from src.news import News
-from src.news_errors import MenuException
+from src.news_errors import MenuException, NoNewsException
+
 
 @pytest.fixture
 def news_client():
@@ -61,3 +62,9 @@ def test__news_show_news_sources_returns_str__succeeds(news_client):
 def test__news_show_news_articles_returns_str__succeeds(news_client):
     news_client.fetch_news()
     assert type(news_client.show_news_articles()) == str
+
+# no news exception
+
+def test__news_show_articles__not_yet_fetched_news__raises(news_client):
+    with pytest.raises(NoNewsException):
+        news_client.show_news_articles()

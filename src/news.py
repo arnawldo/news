@@ -1,6 +1,6 @@
 import requests
 
-from src.news_errors import MenuException
+from src.news_errors import MenuException, NoNewsException
 
 
 class News(object):
