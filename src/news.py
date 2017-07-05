@@ -21,13 +21,31 @@ class News(object):
         Select news source to fetch news from
 
         :param menu_pos: menu position selected corresponding to news source
+        :type menu_pos: int
         :return: None
         """
         # check for incorrect input
         if type(menu_pos) is not int:
             raise MenuException("Invalid input")
-        elif menu_pos < 0 or menu_pos >= len(self.sources):
+        elif menu_pos < 1 or menu_pos >= len(self.sources):
             raise MenuException("Invalid input")
 
         # set source
         self.current_source = self.sources[menu_pos - 1]  # for zero-based indexing
+
+    def set_sort_method(self, menu_pos):
+        """
+        Select sorting method for articles
+
+        :param menu_pos: menu position to select sorting method
+        :type menu_pos: int
+        :return: None
+        """
+        # check for incorrect input
+        if type(menu_pos) is not int:
+            raise MenuException("Invalid input")
+        elif menu_pos < 1 or menu_pos >= len(self.sort_by):
+            raise MenuException("Invalid input")
+
+        # set sort method
+        self.current_sort = self.sort_by[menu_pos - 1]  # for zero-based indexing
