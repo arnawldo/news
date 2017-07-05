@@ -46,3 +46,11 @@ def test__news_set_sort__not_int_input__raises(news_client, not_int_input):
 def test__news_set_source__zero_negative_or_above_5_input__raises(news_client, zero_negative_or_above_5_int):
     with pytest.raises(MenuException):
         news_client.set_sort_method(zero_negative_or_above_5_int)
+
+# show news methods
+
+def test__news_show_news_sources_returns_str__succeeds(news_client):
+    assert type(news_client.show_news_sources()) == str
+
+def test__news_show_news_articles_returns_str__succeeds(news_client):
+    assert type(news_client.show_news_articles()) == str

@@ -49,3 +49,33 @@ class News(object):
 
         # set sort method
         self.current_sort = self.sort_by[menu_pos - 1]  # for zero-based indexing
+
+    def show_news_sources(self):
+        """
+        Show menu of news sources
+
+        :return: None
+        """
+        menu = "\n"
+
+        for i, source in enumerate(self.source_names):
+            menu += "{pos}. {name} \n".format(pos=str(i + 1), name=source)
+
+        return menu
+
+    def show_news_articles(self):
+        """Show news stories"""
+
+        # check if news has been fetched
+        if len(self.articles) == 0:
+            raise NoNewsException("News has not been fetched yet!")
+
+        # pretty print news stories
+        stories = "News from: " + self.current_source + "-" * 100 + "\n\n"
+        for article in self.articles:
+            stories += "TITLE: {}\n\n".format(article["title"])
+            stories += "STORY: {}\n\n".format(article["description"])
+            stories += "AUTHOR: {}\n\n".format(article["author"])
+            stories += "-" * 50 + "\n\n"
+
+        return stories
